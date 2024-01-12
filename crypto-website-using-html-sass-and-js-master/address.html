@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./dist/css/main.css" />
+    </head>
+    <body>
+
+        <div class="page-wrapper bg-dark">
+            <!-- header -->
+            <div class="header-wrapper">
+                <header class="header flex">
+                    <div class="container w-full flex-1 flex">
+                        <div class="header-content w-full flex-1 flex flex-col">
+                            <nav class="navbar flex items-center justify-between">
+                                <div class="brand-and-toggler flex items-center justify-between w-full">
+                                    <a href="#" class="navbar-brand flex items-center">
+                                        <img src="./assets/icons/logo.jpg" alt="Logo" width="40" height="40" class="round-logo">
+                                        <span class="brand-text">Idrila</span> 
+                                    </a>
+                                    <button type="button" class="navbar-show-btn">
+                                        <img src="./assets/icons/menu_icon.svg" />
+                                    </button>
+                                </div>
+
+                                <div class="navbar-list-wrapper flex items-center">
+                                    <ul class="nav-list flex items-center">
+                                        <button type="button" class="navbar-hide-btn">
+                                            <img src="./assets/icons/close.svg" />
+                                        </button>
+                                        <li class="nav-item">
+                                            <a href="index.html#aboutus" class="nav-link text-base no-wrap">About us </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="index.html#statistic" class="nav-link text-base no-wrap">Statistic</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="chains.html" class="nav-link text-base no-wrap">Cryptocurrency</a>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a href="#sup" class="nav-link text-base no-wrap">Support</a>
+                                        </li>
+                                    </ul>
+
+                                    
+                                </div>
+                            </nav>
+
+                            <div class="header-intro flex-1 flex flex-col items-center justify-center text-center">
+                                <h1>All relevant information at the address in one click!</h1>
+                                <a href="#down" class="btn btn-base btn-g-blue-veronica text-base">Get Started</a>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <style>
+                    .containerr {
+                        max-width: 500px; /* Adjust the width as needed */
+                        margin: auto; /* Center the container */
+                    }
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card-back {
+  transform: rotateY(180deg);
+}
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+  transform: rotateY(180deg);
+}
+.center-wrap{
+  position: absolute;
+  width: 100%;
+  padding: 0 35px;
+  top: 50%;
+  left: 0;
+  transform: translate3d(0, -50%, 35px) perspective(100px);
+  z-index: 20;
+  display: block;
+}
+
+
+.formm-style {
+  padding: 13px 20px;
+  padding-left: 55px;
+  height: 48px;
+  width: 100%;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: #c4c3ca;
+  background-color: #1f2029;
+  border: none;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+.formm-style:focus,
+.formm-style:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+.input-icon {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 48px;
+  font-size: 24px;
+  line-height: 48px;
+  text-align: left;
+  color: #ffeba7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+
+.formm-group input:-ms-input-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.formm-group input::-moz-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.formm-group input:-moz-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.formm-group input::-webkit-input-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.formm-group input:focus:-ms-input-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.formm-group input:focus::-moz-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.formm-group input:focus:-moz-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.formm-group input:focus::-webkit-input-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+
+
+
+                </style>
+                
+                <div id="down" class="info flex items-center justify-center" id="aboutus">
+                    <div class="containerr">
+                        <div class="info-content flex items-center justify-center">
+                            <div class="info-item text-center">
+                                <h1 class="info-item-title">write address</h1> <br> 
+                                <div class="formm-group" id="infoForm">
+                                    <label for="address"></label>
+                                    <input type="text" name="address" class="formm-style" placeholder="Your address" id="address" autocomplete="on">
+                                    
+                                </div>	<br>
+                                <div class="formm-group ">
+                                    <label for="blockchain">Blockchain:</label>
+<select id="blockchain" name="blockchain" required>
+<option value="ethereum">Ethereum</option>
+<option value="bitcoin">Bitcoin</option>
+<option value="dogecoin">Dogecoin</option>
+<option value="dash">Dash</option>
+
+<!-- Add other blockchain options as needed -->
+            </select> </div> <br>
+            <button type="button" onclick="getBlockchainInfo()" class="btn btn-base btn-g-blue-veronica text-base">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <!-- end of header -->
+
+            <main >
+                
+                <script>
+                    function getBlockchainInfo() {
+                        var address = document.getElementById('address').value;
+                        var blockchain = document.getElementById('blockchain').value;
+            
+                        // Make API request using fetch
+                        fetch(`https://leap.oraclus.com/v1/address/${blockchain}/${address}`, {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                // General information section
+                var generalInfoHtml = ` <style>
+                  
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            .tablel-header {
+                display:flex;
+                width:100%;
+                background:#000;
+                padding:($half-spacing-unit * 1.5) 0;
+            }
+            
+            .tablel-row {
+                display:flex;
+                width:100%;
+                padding:($half-spacing-unit * 1.5) 0;
+                
+                &:nth-of-type(odd) {
+                    background:$color-form-highlight;
+                }
+            }
+            
+            .tablel-data, .header__item {
+                flex: 1 1 20%;
+                text-align:center;
+            }
+            
+            .header__item {
+                text-transform:uppercase;
+            }
+            
+            </style>
+                    
+            <div class="container">
+                
+                <div class="table">
+                    <div class="tablel-header">
+                        <div class="header__item"><a  href="#">General Information</a></div>
+                        
+                        
+                        
+                        
+                    </div> <br>
+                    <div class="tablel-content">	
+                        <div class="tablel-row">		
+                            <div class="tablel-data">Address:</div>
+                            <div class="tablel-data">${data.address}</div>
+                        </div><br>
+                        <div class="tablel-row">
+                            <div class="tablel-data">Blockchain:</div>
+                            
+                            <div class="tablel-data">${data.blockchain}</div>
+                        </div><br>
+                        <div class="tablel-row">
+                            <div class="tablel-data">Updated At:</div>
+                            <div class="tablel-data">${data.updated_at}</div>
+                        </div><br>
+                        <div class="tablel-row">
+                            <div class="tablel-data">Type:</div>
+                            <div class="tablel-data">${data.type}</div>
+                        </div><br>
+                        <div class="tablel-row">
+                            <div class="tablel-data">Label Name:</div>
+                            <div class="tablel-data">${data.label_name}</div>
+                        </div><br>
+                        <div class="tablel-row">
+                            <div class="tablel-data">Net Worth (USD):</div>
+                            <div class="tablel-data">${data.net_worth_usd}</div>
+                        </div>
+                    </div>	
+                </div>
+            </div>
+                `;
+            
+                
+                
+              
+            
+                // Display the information directly on the page
+                document.getElementById('result').innerHTML = generalInfoHtml;
+            })
+            
+                            .catch(error => {
+                                console.error('Error:', error);
+                                document.getElementById('result').innerHTML = 'Error fetching information.';
+                            });
+                    }
+                </script>
+
+                <section class="page-sc-fees flex items-center">
+                    <div class="container">
+                        <div class="sc-fees-content text-center">
+                            
+                            <div class="data-table-wrapper">
+                                <div class="data-table">
+                                    <table class="table">
+                                        <div id="result"></div>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="page-sc-invest flex items-center">
+                    <div class="container">
+                        <div class="sc-two-content">
+                            <div class="sc-two-left">
+                                <h2 class="large-title">Do you want to download Transactions ? </h2>
+                                <script>
+                                function downloadTransactions() {
+                                    // Get user input for address and selected blockchain
+                                    const address = document.getElementById('address').value;
+                                    const selectedBlockchain = document.getElementById('blockchain').value;
+                                  
+                                    // Construct the API URL based on user input
+                                    const apiUrl = `https://leap.oraclus.com/v1/address/${selectedBlockchain}/${address}`;
+                                  
+                                    // Fetch data from the API
+                                    fetch(apiUrl)
+                                      .then(response => response.json())
+                                      .then(data => {
+                                        // Extract transactions from the API response
+                                        const transactions = data.transactions;
+                                  
+                                        // Create a CSV content with transaction details
+                                        const csvContent = transactions.map(transaction => {
+                                          return Object.values(transaction).join(',') + '\n';
+                                        }).join('');
+                                  
+                                        // Create a Blob containing the CSV content
+                                        const blob = new Blob([csvContent], { type: 'text/csv' });
+                                  
+                                        // Create a link element and trigger the download
+                                        const link = document.createElement('a');
+                                        link.href = window.URL.createObjectURL(blob);
+                                        link.download = 'transactions.csv';
+                                        link.click();
+                                      })
+                                      .catch(error => {
+                                        console.error('Error fetching data:', error);
+                                      });
+                                  }
+                                  </script>
+                                <button class="btn btn-base btn-white text-base" onclick="downloadTransactions()">YES</button>
+                            </div>
+                            <div class="sc-two-right">
+                                <img src="./assets/images/support.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            
+            </main>
+
+            <footer class="footer" id="sup">
+                <div class="container">
+                    <div class="footer-content grid">
+                        <div class="footer-item">
+                            <p class="text text-base">Shine a bright and dynamic light on the world of cryptocurrencies!</p>
+                            <p class="text text-base" style="font-size: larger;">Contact us:</p>
+
+                            <div class="flex items-center">
+                                <ul>
+                                <li class="text text-base"><a href="https://t.me/your-telegram-link">Telegram</li></a>
+                                <li class="text text-base"><a href="https://t.me/your-telegram-link">Email</li></a>
+                            </ul>
+                            </div>
+                           
+                        </div>
+
+                        <div class="footer-item">
+                            <h4 class="footer-item-title text-gray text-base">About Us</h4>
+                            <ul class="footer-links">
+                                <li>
+                                    <a href="#" class="footer-link text-gray text-base">Statistic</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="footer-link text-gray text-base">Analysis</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="footer-link text-gray text-base">Suppor</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="footer-link text-gray text-base">News</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="footer-link text-gray text-base">Links</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-item">
+                            <h4 class="footer-item-title text-gray text-base"></h4>
+                            <p  class="text text-base">Explore the cryptocurrency market with real-time updates on total market capitalization, price changes, and trading volume. Use interactive features for easy search, filtering, and detailed price analysis through candlestick charts. </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        
+
+        <script src="./app/js/script.js"></script>
+    </body>
+</html>

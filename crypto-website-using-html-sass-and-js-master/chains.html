@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./dist/css/main.css" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/themes/dark_glamour.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-data-adapter.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-annotations.min.js
+"></script>
+    </head>
+    <body>
+
+        <div class="page-wrapper bg-dark">
+            <!-- header -->
+            <div class="header-wrapper">
+                <header class="header flex">
+                    <div class="container w-full flex-1 flex">
+                        <div class="header-content w-full flex-1 flex flex-col">
+                            <nav class="navbar flex items-center justify-between">
+                                <div class="brand-and-toggler flex items-center justify-between w-full">
+                                    <a href="#" class="navbar-brand flex items-center">
+                                        <img src="./assets/icons/logo.jpg" alt="Logo" width="40" height="40" class="round-logo">
+                                        <span class="brand-text">Idrila</span> 
+                                    </a>
+                                    <button type="button" class="navbar-show-btn">
+                                        <img src="./assets/icons/menu_icon.svg" />
+                                    </button>
+                                </div>
+
+                                <div class="navbar-list-wrapper flex items-center">
+                                    <ul class="nav-list flex items-center">
+                                        <button type="button" class="navbar-hide-btn">
+                                            <img src="./assets/icons/close.svg" />
+                                        </button>
+                                        <li class="nav-item">
+                                            <a href="index.html#aboutus" class="nav-link text-base no-wrap">About us </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="index.html#statistic" class="nav-link text-base no-wrap">Statistic</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#Cryp" class="nav-link text-base no-wrap">Cryptocurrency</a>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a href="#sup" class="nav-link text-base no-wrap">Support</a>
+                                        </li>
+                                    </ul>
+
+                                    
+                                </div>
+                            </nav>
+
+                        </div>
+                    </div>
+                </header>
+              
+            </div>
+            <!-- end of header -->
+
+            <main>
+            
+
+                <section class="page-sc-fees flex items-center">
+                    <div class="container">
+                        <div class="sc-fees-content text-center">
+                            <div class="title-wrapper">
+                                <h2 class="large-title">Unlock the Crypto Universe</h2>
+                                <p class="text text-base">Explore real-time prices, dynamic percentage changes, and iconic crypto symbols. It's a journey through the heartbeat of the digital economy—don't miss the adventure!</p>
+                                
+                            </div>
+                           <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+                            <div class="data-table-wrapper" id="bitcoin-stat" id="Cryp"> 
+                                <div class="data-table">  <h1 class="flex items-center justify-center" >Bitcoin</h1>
+                                    <script>
+
+                                                
+                                        fetch('https://leap.oraclus.com/v1/stats/bitcoin', {
+                                          method: 'GET',
+                                          headers: {
+                                            'Accept': 'application/json',
+                                          },
+                                        })
+                                          .then(response => {
+                                            // Check if the request was successful (status code 200)
+                                            if (!response.ok) {
+                                              throw new Error('Network response was not ok');
+                                            }
+                                            // Parse the JSON in the response
+                                            return response.json();
+                                          })
+                                          .then(data => {
+                                            // Access and use the JSON data
+                                        
+                                            // Extract market price and its change percentage from the data
+                                            const marketPriceUSD = data.market_price_usd;
+                                            const marketPriceChangePercentage = data.market_price_usd_change_24h_percentage;
+                                            const roundedPercentage = parseFloat(marketPriceChangePercentage).toFixed(4);
+                                            const averageTransactionFeeUSD = data.average_transaction_fee_usd_24h;
+                                            const marketCapUSD = data.market_cap_usd;
+                                            const marketDominancePercentage = data.market_dominance_percentage;
+                                            const inflationUSD = data.inflation_usd_24h;
+                                            
+                                            const inflation = data.inflation_24h;
+                                            const blockchainsize = data.blockchain_size;
+                                            const transactions = data.transactions;
+                                            const transactions24h = data.transactions_24h;
+                                            const blocks= data.blocks;
+                                            const LV= data.largest_transaction_24h_value_usd;
+
+                                        
+                                            // Update the HTML elements with market price and its change percentage
+                                            document.getElementById('market-price').textContent = `$${marketPriceUSD}`;
+                                            document.getElementById('market-price-change').textContent = `${roundedPercentage}%`;
+                                            document.getElementById('average-transaction-fee-usd-24h').textContent = `$${averageTransactionFeeUSD}`;
+                                            document.getElementById('market-cap').textContent = `$${marketCapUSD}`;
+                                            document.getElementById('market-dominance-percentage').textContent = `${marketDominancePercentage}%`;
+                                            document.getElementById('inflation-USD').textContent = `$${inflationUSD}`;
+                                            document.getElementById('inflation').textContent = `${inflation}`;
+                                            document.getElementById('blockchain-size').textContent = `${blockchainsize}`;
+                                            document.getElementById('transactions').textContent = `${transactions}`;
+                                            document.getElementById('transactions-24h').textContent = `${transactions24h}`;
+                                            document.getElementById('blocks').textContent = `${blocks}`;
+                                            document.getElementById('largest-value').textContent = `$${LV}`;
+
+                                          })
+                                          .catch(error => {
+                                            // Handle errors during the fetch
+                                            console.error('Fetch error:', error);
+                                          });
+                                        </script>
+                                   
+                                    <table class="table">
+                                        <tr class="grid">
+                                            <td class=" grid flex items-center justify-center text-lg">Price</td>
+                                            <td class="flex items-center justify-center text-lavender text-lg"  style="padding-left:70px;" id="market-price"></td>
+                                            <td class="flex items-center justify-center text-lg" style="padding-left:110px;">Price change(24h)</td>
+                                            <td class="flex items-center justify-center text-mint text-lg"  style="padding-left:50px;" id="market-price-change" style="padding-right:100px;">  </td>
+                                            <td class="flex items-center justify-center text-lg " style="padding-left:80px;"> Average Transaction Fee(24h)</td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="average-transaction-fee-usd-24h">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="grid">
+                                            <td class=" grid flex items-center justify-center text-lg">inflation USD</td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="inflation-USD" ></td>
+                                            <td class="flex items-center justify-center text-lg"><p>Market dominance</p>
+
+                                               
+                                            <td class="flex items-center justify-center text-mint text-lg" id="market-dominance-percentage" style="padding-right:50px;">  </td>
+                                            <td class="flex items-center justify-center text-lg" style="padding-right:50px;">
+  
+                                                Market cap
+                                            </td>
+                                            <td class="flex items-center justify-center text-lavender text-lg"  id="market-cap">
+                                                
+                                            </td>
+                                        </tr>
+
+                                        <tr class="grid">
+                                            <td class="flex items-center justify-center text-lg">Inflation</td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="inflation" style="padding-left:50px;"></td>
+                                            <td class="flex items-center justify-center text-lg" style="padding-left:50px;"><p>Blockchain size</p></td>
+                                            <td class="flex items-center justify-center text-mint text-lg" id="blockchain-size" style="padding-right:20px;"></td>
+                                            <td class="flex items-center justify-center text-lg" style="padding-right:130px;">
+                                                Transactions
+                                            </td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="transactions">
+                                                
+                                            </td>
+                                        </tr>
+
+                                        <tr class="grid">
+                                            <td class="flex items-center justify-center text-lg">Transactions(24h) </td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="transactions-24h"></td>
+                                            <td class="flex items-center justify-center text-lg"><p>Blocks</p>
+
+                                                
+  
+                                            </td>
+                                            <td class="flex items-center justify-center text-mint text-lg" style="padding-right:70px;" id="blocks"></td>
+                                            <td class="flex items-center justify-center text-lg" style="padding-right:100px;">
+                                                Largest transaction(24h) </td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="largest-value">
+                                                
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="data-table-wrapper" id="bitcoin-stat" id="Cryp" style="width: 1400px; height: 600px;"> 
+                                <div class="data-table" style="width: 1400px; height: 600px;" > 
+                                <style type="text/css">
+                                    
+                                    #ccontainer {
+                                      width: 100%;
+                                      height: 100%;
+                                      margin: 0;
+                                      padding: 0;
+                                    }
+
+                                  </style><div  id="bitcoin-chart"></div><div id="ccontainer"></div>
+    <script>
+      anychart.onDocumentReady(function () { 
+  // load data
+  anychart.data.loadCsvFile(
+'updated_file.csv',
+    function (data) {
+      // create a data table on the loaded data
+      var dataTable = anychart.data.table();
+      dataTable.addData(data);
+      // map the loaded data for the candlestick series
+      var mapping = dataTable.mapAs({
+        open: 1,
+        high: 2,
+        low: 3,
+        close: 4
+      });
+      // create a stock chart
+      var chart = anychart.stock();
+      // change the color theme
+      anychart.theme('darkGlamour');
+      // create the chart plot
+      var plot = chart.plot(0);
+      // set the grid settings
+      plot
+        .yGrid(true)
+        .xGrid(true)
+        .yMinorGrid(true)
+        .xMinorGrid(true);
+      // create the candlestick series
+      var series = plot.candlestick(mapping);
+      series.name('Bitcoin');
+      series.legendItem().iconType('rising-falling');
+      // create a range picker
+      var rangePicker = anychart.ui.rangePicker();
+      rangePicker.render(chart);
+      // create a range selector
+      var rangeSelector = anychart.ui.rangeSelector();
+      rangeSelector.render(chart);
+      // modify the color of the candlesticks 
+      series.fallingFill("#FF0D0D");
+      series.fallingStroke("#FF0D0D");
+      series.risingFill("#43FF43");
+      series.risingStroke("#43FF43");
+      // set the event markers
+      var eventMarkers = plot.eventMarkers();
+      // set the symbol of the event markers
+      plot.eventMarkers().format(function() {
+        return this.getData("symbol");
+      });
+      // set the event markers data
+      eventMarkers.data([
+        { "symbol": 1, date: '2020-03-11', description: 'WHO declares COVID-19 a global pandemic' },
+        
+        { "symbol": 2, date: '2022-02-24', description: 'Russia-Ukraine war begins' },
+       
+      ]);
+      // create an annotation
+      var annotation = plot.annotations();
+      // create a rectangle
+      annotation.rectangle({
+        // X - part of the first anchor
+        xAnchor: '2020-03-11',
+        // Y - part of the first anchor
+        valueAnchor: 45,
+        // X - part of the second anchor
+        secondXAnchor: '2020-12-31',
+        // Y - part of the second anchor
+        secondValueAnchor: 125,
+        // set the stroke settings
+        stroke: '3 #098209',
+        // set the fill settings
+        fill: '#43FF43 0.25'
+      });
+      // create a text label
+      annotation
+        .label()
+        .xAnchor('2020-03-11')
+        .valueAnchor(75)
+        .anchor('left-top')
+        .offsetY(5)
+        .padding(6)
+        .text('Global Lockdowns — Rise in demand for semiconductor chips')
+        .fontColor('#fff')
+        .background({
+          fill: '#098209 0.75',
+          stroke: '0.5 #098209',
+          corners: 2
+        });
+      // add a second plot to show macd values
+      var indicatorPlot = chart.plot(1);
+      // map the macd values
+      var macdIndicator = indicatorPlot.macd(mapping);
+      // set the histogram series
+      macdIndicator.histogramSeries('area');
+      macdIndicator
+        .histogramSeries().normal().fill('green .3').stroke('green');
+      macdIndicator
+        .histogramSeries().normal().negativeFill('red .3').negativeStroke('red');
+      // set the second plot's height
+      indicatorPlot.height('30%');
+      // set the chart display for the selected date/time range
+      chart.selectRange('2020-01-01', '2022-12-31');
+      // set the title of the chart
+      chart.title('Bitcoin Stock Chart');
+      // set the container id for the chart
+      chart.container('ccontainer');
+      // initiate the chart drawing
+      chart.draw();
+    }
+  );
+});
+    </script> </div></div>
+                            <div class="data-table-wrapper" id="eth-stat"> 
+                                <div class="data-table">  <h1 class="flex items-center justify-center">Ethereum</h1>
+                                    <script>
+                                        fetch('https://leap.oraclus.com/v1/stats/ethereum', {
+                                            method: 'GET',
+                                            headers: {
+                                                'Accept': 'application/json',
+                                            },
+                                        })
+                                            .then(response => {
+                                                if (!response.ok) {
+                                                    throw new Error('Network response was not ok');
+                                                }
+                                                return response.json();
+                                            })
+                                            .then(data => {
+                                                const ethMarketPriceUSD = data.market_price_usd;
+                                                const ethMarketPriceChangePercentage = data.market_price_usd_change_24h_percentage;
+                                                const ethRoundedPercentage = parseFloat(ethMarketPriceChangePercentage).toFixed(4);
+                                                const ethAverageTransactionFeeUSD = data.average_transaction_fee_usd_24h;
+                                                const ethMarketCapUSD = data.market_cap_usd;
+                                                const ethMarketDominancePercentage = data.market_dominance_percentage;
+                                                const ethInflationUSD = data.inflation_usd_24h;
+                                                const ethInflation = data.inflation_24h;
+                                                const ethBlockchainSize = data.blockchain_size;
+                                                const ethTransactions = data.transactions;
+                                                const ethTransactions24h = data.transactions_24h;
+                                                const ethBlocks = data.blocks;
+                                                const ethLargestValue = data.largest_transaction_24h_value_usd;
+                            
+                                                document.getElementById('eth-market-price').textContent = `$${ethMarketPriceUSD}`;
+                                                document.getElementById('eth-market-price-change').textContent = `${ethRoundedPercentage}%`;
+                                                document.getElementById('eth-average-transaction-fee-usd-24h').textContent = `$${ethAverageTransactionFeeUSD}`;
+                                                document.getElementById('eth-market-cap').textContent = `$${ethMarketCapUSD}`;
+                                                document.getElementById('eth-market-dominance-percentage').textContent = `${ethMarketDominancePercentage}%`;
+                                                document.getElementById('eth-inflation-USD').textContent = `$${ethInflationUSD}`;
+                                                document.getElementById('eth-inflation').textContent = `${ethInflation}`;
+                                                document.getElementById('eth-blockchain-size').textContent = `${ethBlockchainSize}`;
+                                                document.getElementById('eth-transactions').textContent = `${ethTransactions}`;
+                                                document.getElementById('eth-transactions-24h').textContent = `${ethTransactions24h}`;
+                                                document.getElementById('eth-blocks').textContent = `${ethBlocks}`;
+                                                document.getElementById('eth-largest-value').textContent = `$${ethLargestValue}`;
+                                            })
+                                            .catch(error => {
+                                                console.error('Fetch error:', error);
+                                            });
+                                    </script>
+                                   
+                                    <table class="table">
+                                        <tr class="grid">
+                                            <td class=" grid flex items-center justify-center text-lg">Price</td>
+                                            <td class="flex items-center justify-center text-lavender text-lg"   id="eth-market-price"></td>
+                                            <td class="flex items-center justify-center text-lg" >Price change(24h)</td>
+                                            <td class="flex items-center justify-center text-mint text-lg" id="eth-market-price-change" >  </td>
+                                            <td class="flex items-center justify-center text-lg "> Average Transaction Fee(24h)</td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="eth-average-transaction-fee-usd-24h">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="grid">
+                                            <td class=" grid flex items-center justify-center text-lg">inflation USD</td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="eth-inflation-USD" ></td>
+                                            <td class="flex items-center justify-center text-lg"><p>Market dominance</p>
+
+                                               
+                                            <td class="flex items-center justify-center text-mint text-lg" id="eth-market-dominance-percentage">  </td>
+                                            <td class="flex items-center justify-center text-lg">
+  
+                                                Market cap
+                                            </td>
+                                            <td class="flex items-center justify-center text-lavender text-lg"  id="eth-market-cap">
+                                                
+                                            </td>
+                                        </tr>
+
+                                        <tr class="grid">
+                                            <td class="flex items-center justify-center text-lg">Inflation</td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="eth-inflation" ></td>
+                                            <td class="flex items-center justify-center text-lg" ><p>Blockchain size</p></td>
+                                            <td class="flex items-center justify-center text-mint text-lg" id="eth-blockchain-size" ></td>
+                                            <td class="flex items-center justify-center text-lg" >
+                                                Transactions
+                                            </td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="eth-transactions">
+                                                
+                                            </td>
+                                        </tr>
+
+                                        <tr class="grid">
+                                            <td class="flex items-center justify-center text-lg">Transactions(24h) </td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="eth-transactions-24h"></td>
+                                            <td class="flex items-center justify-center text-lg"><p>Blocks</p>
+
+                                                
+  
+                                            </td>
+                                            <td class="flex items-center justify-center text-mint text-lg"  id="eth-blocks"></td>
+                                            <td class="flex items-center justify-center text-lg">
+                                                Largest transaction(24h) </td>
+                                            <td class="flex items-center justify-center text-lavender text-lg" id="eth-largest-value">
+                                                
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <h1>Coming soon...</h1>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="page-sc-invest flex items-center">
+                    <div class="container ">
+                        <div class="data-table-wrapper">
+                            <div class="data-table">
+                                <h1 class="flex items-center justify-center">Blockchain Comparison</h1>
+                        
+                                <!-- Tabs -->
+                                <div  class="w3-bar w3-black">
+                                    <button class="w3-bar-item w3-button"onclick="openTab('totalTransactionComparisonChartTab')">Total Transactions</button>
+                                    <button class="w3-bar-item w3-button" onclick="openTab('transactionComparison24hChartTab')">Transactions in Last 24 Hours</button>
+                                    <button class="w3-bar-item w3-button" onclick="openTab('blockchainComparisonChartTab')">Blockchain size</button>
+                                </div>
+                        
+                                <!-- Total Transactions Chart Tab -->
+                                <div class="tab" id="totalTransactionComparisonChartTab">
+                                    <canvas id="totalTransactionComparisonChart" width="450" height="100"></canvas>
+                                </div>
+                        
+                                <!-- Transactions in Last 24 Hours Chart Tab -->
+                                <div class="tab" id="transactionComparison24hChartTab">
+                                    <canvas id="transactionComparison24hChart" width="450" height="100"></canvas>
+                                </div>
+                                <div class="tab" id="blockchainComparisonChartTab">
+                                    <canvas id="blockchainComparisonChart" width="450" height="100"></canvas>
+                                </div>
+                        
+                                <script>
+                                    // Function to open a specific tab
+                                    function openTab(tabId) {
+                                        const tabs = document.querySelectorAll('.tab');
+                                        tabs.forEach(tab => tab.style.display = 'none'); // Hide all tabs
+                                        document.getElementById(tabId).style.display = 'block'; // Show the selected tab
+                                    }
+                        
+                                    // Show the default tab when the page loads
+                                    openTab('totalTransactionComparisonChartTab');
+                        
+                                    // Function to fetch blockchain data
+                                    async function fetchBlockchainData(url) {
+                                        const response = await fetch(url);
+                                        if (!response.ok) {
+                                            throw new Error('Network response was not ok');
+                                        }
+                                        const data = await response.json();
+                                        return data; // Adjust based on the actual property in your API response
+                                    }
+                        
+                                    // Fetch data for different blockchains
+                                    const bitcoinDataPromise = fetchBlockchainData('https://leap.oraclus.com/v1/stats/bitcoin');
+                                    const ethereumDataPromise = fetchBlockchainData('https://leap.oraclus.com/v1/stats/ethereum');
+                                    const dashDataPromise = fetchBlockchainData('https://leap.oraclus.com/v1/stats/dash');
+                                    const dogecoinDataPromise = fetchBlockchainData('https://leap.oraclus.com/v1/stats/dogecoin');
+                        
+                                    // Wait for all promises to resolve, then draw the bar charts
+                                    Promise.all([bitcoinDataPromise, ethereumDataPromise, dashDataPromise, dogecoinDataPromise])
+                                        .then(([bitcoinData, ethereumData, dashData, dogecoinData]) => {
+                                            // Draw the bar chart for total transactions
+                                            drawBarChart('totalTransactionComparisonChart', ['Bitcoin', 'Ethereum', 'Dash', 'Dogecoin'], [
+                                                bitcoinData.transactions,
+                                                ethereumData.transactions,
+                                                dashData.transactions,
+                                                dogecoinData.transactions
+                                            ], 'Total Transactions');
+                        
+                                            // Draw the bar chart for transactions in the last 24 hours
+                                            drawBarChart('transactionComparison24hChart', ['Bitcoin', 'Ethereum', 'Dash', 'Dogecoin'], [
+                                                bitcoinData.transactions_24h,
+                                                ethereumData.transactions_24h,
+                                                dashData.transactions_24h,
+                                                dogecoinData.transactions_24h
+                                            ], 'Transactions in Last 24 Hours');
+
+                                            drawBarChart('blockchainComparisonChart', ['Bitcoin', 'Ethereum', 'Dash', 'Dogecoin'], [
+                                                bitcoinData.blockchain_size,
+                                                ethereumData.blockchain_size,
+                                                dashData.blockchain_size,
+                                                dogecoinData.blockchain_size
+                                            ], 'Blockchain size ');
+                                        });
+                        
+                                    // Function to draw a bar chart
+                                    function drawBarChart(chartId, labels, data, label) {
+                                        const ctx = document.getElementById(chartId).getContext('2d');
+                        
+                                        new Chart(ctx, {
+                                            type: 'bar',
+                                            data: {
+                                                labels: labels,
+                                                datasets: [{
+                                                    label: label,
+                                                    data: data,
+                                                    backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                                                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 206, 86, 1)', 'rgba(54, 162, 235, 1)'],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
+
+               
+            </main>
+
+            <footer class="footer" id="sup">
+                <div class="container">
+                    <div class="footer-content grid">
+                        <div class="footer-item">
+                            <p class="text text-base">Shine a bright and dynamic light on the world of cryptocurrencies!</p>
+                            <p class="text text-base" style="font-size: larger;">Contact us:</p>
+
+                            <div class="flex items-center">
+                                <ul>
+                                <li class="text text-base"><a href="https://t.me/your-telegram-link">Telegram</li></a>
+                                <li class="text text-base"><a href="https://t.me/your-telegram-link">Email</li></a>
+                            </ul>
+                            </div>
+                           
+                        </div>
+
+                        <div class="footer-item">
+                            <h4 class="footer-item-title text-gray text-base">About Us</h4>
+                            <ul class="footer-links">
+                                <li>
+                                    <a href="#" class="footer-link text-gray text-base">Statistic</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="footer-link text-gray text-base">Analysis</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="footer-link text-gray text-base">Suppor</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="footer-link text-gray text-base">News</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="footer-link text-gray text-base">Links</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-item">
+                            <h4 class="footer-item-title text-gray text-base"></h4>
+                            <p  class="text text-base">Explore the cryptocurrency market with real-time updates on total market capitalization, price changes, and trading volume. Use interactive features for easy search, filtering, and detailed price analysis through candlestick charts. </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        
+
+        <script src="./app/js/script.js"></script>
+    </body>
+</html>
